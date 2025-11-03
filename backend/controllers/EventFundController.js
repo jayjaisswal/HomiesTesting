@@ -40,7 +40,7 @@
 
 
 
-const Student = require('../models/Student'); // apna student model yahan import karo
+const Student = require('../models/Student'); 
 const EventFund = require('../models/EventFundmodel');
 
 
