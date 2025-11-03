@@ -19,6 +19,10 @@ const superAdminSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  isAdmin: {
+    type: Boolean,
+    default: true, // ✅ important for SuperAdmin
+  },
   address: {
     type: String,
   },
@@ -28,6 +32,8 @@ const superAdminSchema = new mongoose.Schema({
   },
 }, { timestamps: true });
 
-const SuperAdmin = mongoose.model("SuperAdmin", superAdminSchema);
+// ✅ FIX: Prevent OverwriteModelError
+const SuperAdmin =
+  mongoose.models.SuperAdmin || mongoose.model("SuperAdmin", superAdminSchema);
+
 module.exports = SuperAdmin;
-// export default SuperAdmin;
